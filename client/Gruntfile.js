@@ -1,4 +1,6 @@
+// Generated on 2015-03-04 using generator-angular 0.11.1
 'use strict';
+
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('clientApp')
+angular.module('chariotApp')
 .service('UsersService', function($http) {
     
     this.getUsers = function() {
