@@ -1,6 +1,3 @@
-// Generated on 2015-03-06 using generator-angular 0.11.1
-'use strict';
-
 // # Globbing
 // for performance reasons we're only matching one level down:
 // 'test/spec/{,*/}*.js'
@@ -18,7 +15,8 @@ module.exports = function (grunt) {
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
-    dist: 'dist'
+    // dist: 'dist'
+    dist: '../public'
   };
 
   // Define the configuration for all the tasks
@@ -71,11 +69,24 @@ module.exports = function (grunt) {
         hostname: 'localhost',
         livereload: 35729
       },
+      proxies: [
+        {
+          context: '/api',
+          host: 'localhost',
+          port: 3000
+        }
+      ],
       livereload: {
         options: {
           open: true,
-          middleware: function (connect) {
-            return [
+          middleware: function (connect, options) {
+            if (!Array.isArray(options.base)) {
+              options.base = [options.base];
+            }
+
+            // Setup the proxy
+            var middlewares = [
+              require('grunt-connect-proxy/lib/utils').proxyRequest,
               connect.static('.tmp'),
               connect().use(
                 '/bower_components',
@@ -87,6 +98,12 @@ module.exports = function (grunt) {
               ),
               connect.static(appConfig.app)
             ];
+
+            // Make directory browse-able.
+            var directory = options.directory || options.base[options.base.length - 1];
+            middlewares.push(connect.directory(directory));
+
+            return middlewares;
           }
         }
       },
@@ -136,13 +153,14 @@ module.exports = function (grunt) {
 
     // Empties folders to start fresh
     clean: {
+      options: { force: true },
       dist: {
         files: [{
           dot: true,
           src: [
             '.tmp',
             '<%= yeoman.dist %>/{,*/}*',
-            '!<%= yeoman.dist %>/.git{,*/}*'
+            '!<%= yeoman.dist %>/.git*'
           ]
         }]
       },
@@ -227,7 +245,8 @@ module.exports = function (grunt) {
       },
       server: {
         options: {
-          sourcemap: true
+          sourcemap: true,
+    debugInfo: true
         }
       }
     },
@@ -302,16 +321,16 @@ module.exports = function (grunt) {
     //   dist: {}
     // },
 
-    imagemin: {
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '<%= yeoman.app %>/images',
-          src: '{,*/}*.{png,jpg,jpeg,gif}',
-          dest: '<%= yeoman.dist %>/images'
-        }]
-      }
-    },
+    // imagemin: {
+    //   dist: {
+    //     files: [{
+    //       expand: true,
+    //       cwd: '<%= yeoman.app %>/images',
+    //       src: '{,*/}*.{png,jpg,jpeg,gif}',
+    //       dest: '<%= yeoman.dist %>/images'
+    //     }]
+    //   }
+    // },
 
     svgmin: {
       dist: {
@@ -375,7 +394,7 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             'views/{,*/}*.html',
-            'images/{,*/}*.{webp}',
+            'images/{,*/}*',
             'styles/fonts/{,*/}*.*'
           ]
         }, {
@@ -408,7 +427,7 @@ module.exports = function (grunt) {
       ],
       dist: [
         'compass:dist',
-        'imagemin',
+        // 'imagemin',
         'svgmin'
       ]
     },
@@ -432,7 +451,8 @@ module.exports = function (grunt) {
       'clean:server',
       'wiredep',
       'concurrent:server',
-      'autoprefixer:server',
+      'autoprefixer',
+      'configureProxies',
       'connect:livereload',
       'watch'
     ]);
@@ -448,6 +468,7 @@ module.exports = function (grunt) {
     'wiredep',
     'concurrent:test',
     'autoprefixer',
+    'configureProxies',
     'connect:test',
     'karma'
   ]);
@@ -474,4 +495,9 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.registerTask('heroku:production', 'build');
+
+  grunt.loadNpmTasks('grunt-connect-proxy');
 };
+
