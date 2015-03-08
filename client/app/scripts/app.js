@@ -27,10 +27,6 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .when('/users', {
-        templateUrl: 'views/users.html',
-        controller: 'UsersCtrl'
-      })
       .otherwise({
         redirectTo: '/'
       });
