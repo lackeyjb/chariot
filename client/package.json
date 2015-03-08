@@ -1,7 +1,9 @@
 {
   "name": "chariot",
   "version": "0.0.0",
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt-connect-proxy": "^0.1.11"
+  },
   "repository": {},
   "dependencies": {
     "grunt": "^0.4.5",
