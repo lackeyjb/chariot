@@ -7,8 +7,13 @@ gem 'rails-api'
 
 gem 'spring', :group => :development
 
+
 gem 'geocoder'
 
+
+gem 'devise'
+gem 'devise_token_auth', git: 'https://github.com/jasonswett/devise_token_auth.git'
+gem 'omniauth'
 gem 'pg'
 
 group :development, :test do

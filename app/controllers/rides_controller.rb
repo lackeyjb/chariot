@@ -1,5 +1,6 @@
 class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /rides
   # GET /rides.json
