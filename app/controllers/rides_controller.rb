@@ -4,9 +4,12 @@ class RidesController < ApplicationController
   # GET /rides
   # GET /rides.json
   def index
-    @rides = Ride.all
-
-    render json: @rides
+    if params[:search].present?
+      @rides = Geocoder.search(params[:search])
+    else
+      @rides = Ride.all
+    end
+   render json: @rides
   end
 
   # GET /rides/1
@@ -18,12 +21,22 @@ class RidesController < ApplicationController
   # POST /rides
   # POST /rides.json
   def create
-    @ride = Ride.new(ride_params)
+    params = { 'ride' =>  [{ user_id: 12},
+      Geocoder.search('729 bonaventure, atlanta')
+    ] }
+    raw_data = params['ride']
+    params[:ride] = { 
+                user_id:       raw_data[0][:user_id],
+                start_address: raw_data[1][0].data['formatted_address'],
+                end_address:   'Ponce City Market, Ponce De Leon Avenue Northeast, Atlanta, GA 30308, USA'
+             }
+   
+    @ride = Ride.new(params[:ride])
 
     if @ride.save
       render json: @ride, status: :created, location: @ride
-    else
-      render json: @ride.errors, status: :unprocessable_entity
+    # else
+    #   render json: @ride.errors, status: :unprocessable_entity
     end
   end
 
