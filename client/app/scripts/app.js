@@ -32,6 +32,15 @@ angular
         templateUrl: 'views/user_registrations/new.html',
         controller: 'UserRegistrationsCtrl'
       })
+      .when('/rides', {
+        templateUrl: 'views/rides.html',
+        controller: 'RidesCtrl',
+        resolve: {
+          auth: ['$auth', function($auth) {
+            return $auth.validateUser();
+          }]
+        }
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'

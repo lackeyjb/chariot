@@ -38,12 +38,14 @@
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li><a href="#/">Home</a></li>
+              <li><a ng-href="#/">Home</a></li>
+              <li ng-show="user.id"><a ng-href="#/rides">Rides</a></li>
               <li><a ng-href="#/about">About</a></li>
               <li ng-show="!user.id"><a ng-href="#/sign_in">Sign in</a></li> 
-              <li ng-show="user.id"><a ng-click='signOut()'>Sign out</a></li>
-              
+              <li ng-show="user.id"><a ng-click='signOut()'>Sign out</a></li> 
+              <li><a ng-href="#/sign_up">Sign up</a></li>   
             </ul>
+
           </div>
         </div>
       </div>
@@ -93,6 +95,7 @@
     <script src="scripts/controllers/about.js"></script>
     <script src="scripts/controllers/user_sessions.js"></script>
     <script src="scripts/controllers/user_registrations.js"></script>
+    <script src="scripts/controllers/rides.js"></script>
     
     <!-- endbuild -->
 </body>
