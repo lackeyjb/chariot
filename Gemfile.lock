@@ -150,10 +150,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-
-  geocoder
   devise
   devise_token_auth!
+  geocoder
   omniauth
   pg
   rails (= 4.2.0)
