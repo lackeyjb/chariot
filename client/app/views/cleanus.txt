@@ -1,0 +1,9 @@
+Clean-up  " from the Yeoman team":
+
+(1) ~/chariot/chariot/client/app/index.html:
+   54      <div class="footer">
+   55        <div class="container">
+   56:         <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+   57        </div>
+   58      </div>
+

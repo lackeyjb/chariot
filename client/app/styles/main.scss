@@ -10,6 +10,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 }
 
+
 body {
   padding: 0;
 }
@@ -20,6 +21,13 @@ body {
 .footer {
   padding-left: 15px;
   padding-right: 15px;
+}
+
+.about {
+  li {
+    list-style-type: none;
+    padding: 10px;
+  }
 }
 
 /* Custom page header */
