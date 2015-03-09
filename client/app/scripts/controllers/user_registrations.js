@@ -18,4 +18,7 @@ angular.module('chariotApp')
           });
         });
     };
+    $scope.$on('auth:registration-email-error', function(ev, reason) {
+      $scope.error = reason.errors[0];
+    });
   }]);
