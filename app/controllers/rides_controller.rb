@@ -1,7 +1,6 @@
 class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :update, :destroy]
-  before_action :authenticate_user!
-
+  
   # GET /rides
   # GET /rides.json
   def index
@@ -19,6 +18,7 @@ class RidesController < ApplicationController
   # POST /rides
   # POST /rides.json
   def create
+    puts "RidesController.create"
     @ride = Ride.new(ride_params)
 
     if @ride.save
