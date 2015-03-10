@@ -17,7 +17,6 @@ angular
     'ngSanitize',
     'ngTouch',
     'ng-token-auth',
-    'geolocation'
   ])
   .config(function ($routeProvider) {
     $routeProvider
