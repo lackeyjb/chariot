@@ -1,7 +1,6 @@
 class RidesController < ApplicationController
   before_action :set_ride, only: [:show, :update, :destroy]
-  before_action :authenticate_user!
-
+  
   # GET /rides
   # GET /rides.json
   def index
@@ -22,17 +21,9 @@ class RidesController < ApplicationController
   # POST /rides
   # POST /rides.json
   def create
-    
-    
-    raw_data = params['ride']
-    format_address = Geocoder.search(raw_data[0][:latitude] + "," + raw_data[0][:longitude] )
-    params[:ride] = { 
-                user_id:       raw_data[0][:user_id],
-                start_address: format_address.data['formatted_address'],
-                end_address:   'Ponce City Market, Ponce De Leon Avenue Northeast, Atlanta, GA 30308, USA'
-             }
-   
-    @ride = Ride.new(params)
+
+    puts "RidesController.create"
+    @ride = Ride.new(ride_params)
 
     if @ride.save
       render json: @ride, status: :created, location: @ride

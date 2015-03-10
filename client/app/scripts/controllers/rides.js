@@ -8,43 +8,35 @@
  * Controller of the chariotApp
  */
 angular.module('chariotApp')
-  .controller('RidesCtrl', function ($scope, RidesService) {
-    
-    function getRides() {
-       RidesService.getRides()
-       .success(function(data) {
-         $scope.rides = data;
-       })
-       .error(function(){
-         alert('GET: error');
-       });
-    }
 
-    getRides();
+  .controller('RidesCtrl', ['$scope', '$rootScope', 'RidesService',
+    function($scope, $rootScope, RidesService) {
 
-    var getGeolocation = function() {
-      if(navigator.geolocation) {
-        return navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        getGeolocation.innerHTML = 'Update yo browser Y\'all!';
-      }
-    };
-
-    var showPosition = function(position) {
-      return {
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      };
-    };
-
-    // $scope.rides = ['Ride One', 'Ride Two'];
-
-    $scope.postCoords = function() {
-      RidesService.postCoords(showPosition())
-      .success(function() {
-        console.log('success');
+      $scope.geolocation = function() {
         
+        if (!navigator) {
+          $rootScope.$apply(function() {
+            $scope.positionMessage = 'Geolocation is not supported';
+          });
+        } else {
+            $scope.positionMessage = 'Loading...';
+            navigator.geolocation.getCurrentPosition(function(position) {
+              $rootScope.$apply(function() {
+                $scope.positionMessage = 
+                  'Latitude: '  + position.coords.latitude + ' ' +
+                  'Longitude: ' + position.coords.longitude;
 
-      });
-    };
-  });
+                RidesService.postCoords(position)
+                .success(function() {
+                  console.log('postCoords returned success');
+                })
+                .error(function() {
+                  alert('postCoords ERROR');
+                });
+              });
+          });
+        }
+      };
+
+}]);
+

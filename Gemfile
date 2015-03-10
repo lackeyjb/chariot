@@ -20,6 +20,13 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
 
+group :test do 
+  gem 'selenium-webdriver'
+  gem 'capybara'
+  gem 'faker'
+  gem 'factory_girl_rails'
+end
+
 
 
 # To use ActiveModel has_secure_password
