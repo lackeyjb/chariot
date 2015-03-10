@@ -13,44 +13,28 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
+    'ui.router',
     'ngSanitize',
-    'ngTouch',
-    'ng-token-auth',
+    'ngTouch'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('home');
+    $stateProvider
+      .state('home', {
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/sign_in', {
-        templateUrl: 'views/user_sessions/new.html',
-        controller: 'UserSessionsCtrl'
-      })
-      .when('/sign_up', {
-        templateUrl: 'views/user_registrations/new.html',
-        controller: 'UserRegistrationsCtrl'
-      })
-      .when('/rides', {
+      .state('rides', {
+        url: '/rides',
         templateUrl: 'views/rides.html',
-        controller: 'RidesCtrl',
-        resolve: {
-          auth: ['$auth', function($auth) {
-            return $auth.validateUser();
-          }]
-        }
+        controller: 'RidesCtrl'
       })
-      .when('/about', {
+      .state('about', {
+        url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
       });
-  })
-  .run(['$rootScope', '$location', function($rootScope, $location) {
-    $rootScope.$on('auth:login-success', function() {
-      $location.path('/');
-    });
-  }]);
+      
+   
+  });

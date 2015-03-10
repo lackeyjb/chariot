@@ -11,6 +11,6 @@ angular.module('chariotApp')
     };
 
     console.log('sending to server a position = ' + JSON.stringify(position));
-    return $http.post('/api/rides', {"ride" : position});
+    return $http.post('/api/rides', {'ride' : position});
   };
 });
