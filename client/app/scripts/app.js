@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngMessages'
   ])
 
   .config(function ($stateProvider, $urlRouterProvider, AccessLevels) {

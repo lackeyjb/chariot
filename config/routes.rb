@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
-    resources :rides, except: [:new, :edit]   
+      resources :rides, except: [:new, :edit]  
   end
 
   post '/auth/register',     to: 'auth#register'     

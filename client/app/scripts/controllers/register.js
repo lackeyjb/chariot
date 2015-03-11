@@ -1,10 +1,21 @@
 'use strict';
 
 angular.module('chariotApp')
-.controller('RegisterCtrl', function($scope, $state, Auth) {
+.controller('RegisterCtrl', function ($scope, $state, Auth) {
+  $scope.errors = [];
+
   $scope.register = function() {
-    Auth.register($scope.user).then(function() {
-      $state.go('user.rides');
-    });
+    if($scope.registerForm.$valid) {
+      $scope.errors = [];
+      Auth.register($scope.user).success(function() {
+        $state.go('anon.home');
+      }).error(function(err) {
+        $scope.errors.push(err);
+      });
+    }
+    else {
+      return $scope.errors;
+    }
   };
+  
 });
