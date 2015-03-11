@@ -4,8 +4,9 @@
   <form name="addressForm">     
     <div class="form-group">
       <label class="control-label" for="focusedInput"><a ng-click="geolocation();"><i class="fa fa-location-arrow"></i>Use my location</a></label>
-      <input type="text" ng-model="autocomplete" ng-autocomplete placeholder="{{positionMessage}}"class="form-control" id="focusedInput" type="text">
+      <input type="text" ng-model="autocomplete" ng-autocomplete placeholder="Search a spot"class="form-control" id="focusedInput" type="text" details="details">
     </div>
   </form>
-
+  <p>{{details.LatLng}}</p>
+  <p>{{postionMessage}}</p>
 </div>
