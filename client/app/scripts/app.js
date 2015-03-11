@@ -19,7 +19,7 @@ angular
     'ngMessages'
   ])
 
-  .config(function ($stateProvider, $urlRouterProvider, AccessLevels) {
+  .config([ '$stateProvider', '$urlRouterProvider', 'AccessLevels', function ($stateProvider, $urlRouterProvider, AccessLevels) {
     $urlRouterProvider.otherwise('/');
     $stateProvider
       .state('anon',{
@@ -61,8 +61,8 @@ angular
         templateUrl: 'views/user/rides.html',
         controller: 'RidesCtrl'
       });
-    })
-  .run(function($rootScope, $state, Auth) {
+    }])
+  .run([ '$rootScope', '$state', 'Auth', function($rootScope, $state, Auth) {
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
       if (!Auth.authorize(toState.data.access)) {
         event.preventDefault();
@@ -70,7 +70,7 @@ angular
         $state.go('anon.login');
       }
     });
-  });
+  }]);
         
    
   

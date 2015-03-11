@@ -50,7 +50,7 @@
                 <a ui-sref="anon.login">Login</a>
               </li>
               <li ng-hide="auth.isAuthenticated()">
-                <a ui-sref="anon.register">Register</a>
+                <a ui-sref="anon.register">Sign up</a>
               </li>
               <li ng-show="auth.isAuthenticated()">
                 <p class="navbar-text">Hello, <strong>{{user().email}}</strong></p>
