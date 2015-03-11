@@ -1,4 +1,4 @@
-class AuthController < ApplicationController::API
+class AuthController < ApplicationController
   require 'auth_token'
 
   def register

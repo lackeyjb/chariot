@@ -1,5 +1,5 @@
 module Api
-  class BaseController < ApplicationController::Api
+  class BaseController < ApplicationController
     require 'auth_token'
 
     before_action :authenticate

@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  scope '/api' do
+  namespace :api do
     resources :rides, except: [:new, :edit]   
   end
 
-  match '/auth/register',     to: 'auth#register',     via: 'post'
-  match '/auth/authenticate', to: 'auth#authenticate', via: 'post'
-  match '/auth/token_status', to: 'auth#token_status', via: 'get'
+  post '/auth/register',     to: 'auth#register'     
+  post '/auth/authenticate', to: 'auth#authenticate'
+  get '/auth/token_status',  to: 'auth#token_status'
 end
