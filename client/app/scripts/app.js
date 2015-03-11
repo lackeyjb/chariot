@@ -57,7 +57,7 @@ angular
       })
       .state('user.rides', {
         url: '/rides',
-        templateUrl: 'user/rides.html',
+        templateUrl: 'views/user/rides.html',
         controller: 'RidesCtrl'
       });
     })

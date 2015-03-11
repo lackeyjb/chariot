@@ -6,7 +6,7 @@ module AuthToken
                claims: { exp: 86400 })
   end
 
-  def self.valid?
+  def self.valid?(token)
     begin
       JWT.decode(token, Rails.application.secrets.secret_key_base)
     rescue  

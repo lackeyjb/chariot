@@ -9,7 +9,7 @@ angular.module('chariotApp')
   var token = LocalService.get('auth_token');
 
   if(token) {
-    token = angular.fromJSON(LocalService.get('auth_token')).token;
+    token = angular.fromJson(LocalService.get('auth_token')).token;
     checkTokenStatus(token);
   }
 
@@ -23,10 +23,13 @@ angular.module('chariotApp')
     },
     login: function(credentials) {
       var login = $http.post('/auth/authenticate', credentials);
-      login.success(function(result) {
+      login.success(function (result) {
         LocalService.set('auth_token', JSON.stringify(result));
       });
       return login;
+    },
+    isAuthenticated: function() {
+      return LocalService.get('auth_token');
     },
     logout: function() {
       LocalService.unset('auth_token');
@@ -48,7 +51,7 @@ angular.module('chariotApp')
     request: function(config) {
       var token;
       if(LocalService.get('auth_token')){
-        token = angular.fromJSON(LocalService.get('auth_token')).token;
+        token = angular.fromJson(LocalService.get('auth_token')).token;
       }
       if(token){
         config.headers.Authorization = 'Bearer' + token;
