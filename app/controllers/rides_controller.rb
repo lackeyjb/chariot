@@ -27,8 +27,8 @@ class RidesController < ApplicationController
     
     if @ride.save
       render json: @ride, status: :created, location: @ride
-    # else
-    #   render json: @ride.errors, status: :unprocessable_entity
+    else
+      render json: @ride.errors, status: :unprocessable_entity
     end
   end
 
@@ -59,14 +59,6 @@ class RidesController < ApplicationController
     end
 
     def ride_params
-      # if params['lat_long']
-        params[:ride] = { user_id: 1, 
-                          start_lat: params['position'],
-                          start_long: 0.415
-                        }
-      # elsif params['address']
-      #   params['ride'][:start_address] = Geocoder.search(params['address'])
-      # end
-      params.require(:ride).permit(:user_id, :start_lat, :start_long, :end_lat, :end_long) 
+      params.require(:ride).permit(:user_id, :start_location, :end_location) 
     end
 end

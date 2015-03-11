@@ -57,7 +57,7 @@ module Api
       end
 
       def ride_params
-        params.require(:ride).permit(:user_id, :start_address, :end_address)
+        params.require(:ride).permit(:user_id, :start_location, :end_location)
       end
   end
 end
