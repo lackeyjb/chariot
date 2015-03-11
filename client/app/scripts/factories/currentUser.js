@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chariotApp')
-.factory('CurrentUser', function(LocalService) {
+.factory('CurrentUser', [ 'LocalService', function(LocalService) {
   return {
     user: function() {
       if(LocalService.get('auth_token')) {
@@ -11,4 +11,4 @@ angular.module('chariotApp')
       }
     }
   };
-});
+}]);

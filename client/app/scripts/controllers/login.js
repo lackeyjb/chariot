@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chariotApp')
-.controller('LoginCtrl', function ($scope, $state, Auth) {
+.controller('LoginCtrl', ['$scope', '$state', 'Auth', function ($scope, $state, Auth) {
 
   $scope.errors =  [];
 
@@ -19,4 +19,4 @@ angular.module('chariotApp')
       return $scope.errors;
     }
   };
-});
+}]);
