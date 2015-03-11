@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('chariotApp')
-.service('RidesService', [ '$http', function($http) {
+.service('RidesService', [ '$http', 'CurrentUser', function ($http, CurrentUser) {
   this.postCoords = function(fullPosition) {
     console.log('postCords called with fullPosition = ' + JSON.stringify(fullPosition));
 
     var position = { 
+      user_id:   CurrentUser.user().id,
       latitude:  fullPosition.coords.latitude,
       longitude: fullPosition.coords.longitude
     };
