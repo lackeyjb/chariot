@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chariotApp')
-.factory('Auth', function($http, LocalService, AccessLevels) {
+.factory('Auth', [ '$http', 'LocalService', 'AccessLevels', function ($http, LocalService, AccessLevels) {
   function checkTokenStatus(token) {
     $http.get('/auth/token_status?token=' + token);
   }
@@ -43,8 +43,8 @@ angular.module('chariotApp')
       return register;
     }
   };  
-})
-.factory('AuthInterceptor', function($q, $injector) {
+}])
+.factory('AuthInterceptor',[ '$q', '$injector', function($q, $injector) {
   var LocalService = $injector.get('LocalService');
 
   return {
@@ -66,7 +66,7 @@ angular.module('chariotApp')
       return $q.reject(response);
     }
   };
-})
-.config(function($httpProvider) {
+}])
+.config([ '$httpProvider', function($httpProvider) {
   $httpProvider.interceptors.push('AuthInterceptor');
-});
+}]);

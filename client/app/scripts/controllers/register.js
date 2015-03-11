@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chariotApp')
-.controller('RegisterCtrl', function ($scope, $state, Auth) {
+.controller('RegisterCtrl', [ '$scope', '$state', 'Auth', function ($scope, $state, Auth) {
   $scope.errors = [];
 
   $scope.register = function() {
@@ -18,4 +18,4 @@ angular.module('chariotApp')
     }
   };
   
-});
+}]);

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chariotApp')
-.service('RidesService', function($http) {
+.service('RidesService', [ '$http', function($http) {
   this.postCoords = function(fullPosition) {
     console.log('postCords called with fullPosition = ' + JSON.stringify(fullPosition));
 
@@ -13,4 +13,4 @@ angular.module('chariotApp')
     console.log('sending to server a position = ' + JSON.stringify(position));
     return $http.post('/api/rides', {'ride' : position});
   };
-});
+}]);
