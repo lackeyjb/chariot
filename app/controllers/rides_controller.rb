@@ -24,7 +24,7 @@ class RidesController < ApplicationController
 
     puts "RidesController.create"
     @ride = Ride.new(ride_params)
-
+    
     if @ride.save
       render json: @ride, status: :created, location: @ride
     # else
@@ -50,7 +50,7 @@ class RidesController < ApplicationController
     @ride.destroy
 
     head :no_content
-  end
+  end 
 
   private
 
@@ -59,6 +59,14 @@ class RidesController < ApplicationController
     end
 
     def ride_params
-      params.require(:ride).permit(:user_id, :start_address, :end_address)
+      # if params['lat_long']
+        params[:ride] = { user_id: 1, 
+                          start_lat: params['position'],
+                          start_long: 0.415
+                        }
+      # elsif params['address']
+      #   params['ride'][:start_address] = Geocoder.search(params['address'])
+      # end
+      params.require(:ride).permit(:user_id, :start_lat, :start_long, :end_lat, :end_long) 
     end
 end

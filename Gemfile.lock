@@ -64,7 +64,6 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
-    geocoder (1.2.7)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -73,6 +72,7 @@ GEM
     faker (1.4.3)
       i18n (~> 0.5)
     ffi (1.9.6)
+    geocoder (1.2.7)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hashie (3.4.0)
@@ -178,9 +178,9 @@ DEPENDENCIES
   capybara
   devise
   devise_token_auth!
-  geocoder
   factory_girl_rails
   faker
+  geocoder
   omniauth
   pg
   rails (= 4.2.0)
