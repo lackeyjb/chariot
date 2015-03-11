@@ -3,7 +3,7 @@
 angular.module('chariotApp')
 .service('RidesService', [ '$http', 'CurrentUser', function ($http, CurrentUser) {
   this.postCoords = function(fullPosition) {
-    console.log('postCords called with fullPosition = ' + JSON.stringify(fullPosition));
+    console.log('postCords called with user_id & fullPosition = ' + JSON.stringify(fullPosition));
 
     var position = { 
       user_id:   CurrentUser.user().id,
