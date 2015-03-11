@@ -7,13 +7,6 @@ gem 'rails-api'
 
 gem 'spring', :group => :development
 
-
-gem 'geocoder'
-
-
-gem 'devise'
-gem 'devise_token_auth', git: 'https://github.com/jasonswett/devise_token_auth.git'
-gem 'omniauth'
 gem 'pg'
 
 group :development, :test do
@@ -30,7 +23,8 @@ end
 
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
+gem 'jwt-rb'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

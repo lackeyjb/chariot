@@ -13,44 +13,64 @@ angular
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
+    'ui.router',
     'ngSanitize',
     'ngTouch',
-    'ng-token-auth',
+    'ngMessages'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
+
+  .config(function ($stateProvider, $urlRouterProvider, AccessLevels) {
+    $urlRouterProvider.otherwise('/');
+    $stateProvider
+      .state('anon',{
+        abstract: true,
+        template: '<ui-view/>',
+        data: {
+          access: AccessLevels.anon
+        }
+      })
+      .state('anon.home', {
+        url: '/',
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/sign_in', {
-        templateUrl: 'views/user_sessions/new.html',
-        controller: 'UserSessionsCtrl'
-      })
-      .when('/sign_up', {
-        templateUrl: 'views/user_registrations/new.html',
-        controller: 'UserRegistrationsCtrl'
-      })
-      .when('/rides', {
-        templateUrl: 'views/rides.html',
-        controller: 'RidesCtrl',
-        resolve: {
-          auth: ['$auth', function($auth) {
-            return $auth.validateUser();
-          }]
-        }
-      })
-      .when('/about', {
+      .state('anon.about', {
+        url: '/about',
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
+      .state('anon.login', {
+        url: '/login',
+        templateUrl: 'views/auth/login.html',
+        controller: 'LoginCtrl'
+      })
+      .state('anon.register', {
+        url: '/register',
+        templateUrl: 'views/auth/register.html',
+        controller: 'RegisterCtrl'
+      })
+      .state('user', {
+        abstract: true,
+        template: '<ui-view/>',
+        data: {
+          access: AccessLevels.user
+        }
+      })
+      .state('user.rides', {
+        url: '/rides',
+        templateUrl: 'views/user/rides.html',
+        controller: 'RidesCtrl'
       });
-  })
-  .run(['$rootScope', '$location', function($rootScope, $location) {
-    $rootScope.$on('auth:login-success', function() {
-      $location.path('/');
+    })
+  .run(function($rootScope, $state, Auth) {
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+      if (!Auth.authorize(toState.data.access)) {
+        event.preventDefault();
+
+        $state.go('anon.login');
+      }
     });
-  }]);
+  });
+        
+   
+  
