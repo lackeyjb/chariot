@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  scope '/api' do
-    mount_devise_token_auth_for 'User', at: 'auth'
-    resources :rides, except: [:new, :edit]
-    
+  namespace :api do
+      resources :rides, except: [:new, :edit]  
   end
 
+  post '/auth/register',     to: 'auth#register'     
+  post '/auth/authenticate', to: 'auth#authenticate'
+  get '/auth/token_status',  to: 'auth#token_status'
 end

@@ -25,11 +25,16 @@ module.exports = function(config) {
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/angular-cookies/angular-cookies.js',
       'bower_components/angular-resource/angular-resource.js',
-      'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
+<<<<<<< HEAD
       'bower_components/angular-cookie/angular-cookie.js',
       'bower_components/ng-token-auth/dist/ng-token-auth.js',
+=======
+      'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/underscore/underscore.js',
+      'bower_components/angular-messages/angular-messages.js',
+>>>>>>> 870f29436208c3098792341e8f276885dddc9248
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
