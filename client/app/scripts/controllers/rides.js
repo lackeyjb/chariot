@@ -26,7 +26,9 @@ angular.module('chariotApp')
                   'Latitude: '  + position.coords.latitude + ' ' +
                   'Longitude: ' + position.coords.longitude;
 
-                RidesService.postCoords(position)
+                var googlePosition  = $scope.details.geometry.location;
+                
+                RidesService.postCoords(position, googlePosition)
                 .success(function() {
                   console.log('postCoords returned success');
                 })
@@ -38,16 +40,17 @@ angular.module('chariotApp')
         }
       };
 
-      $scope.googleAddress = function() {
-        console.log($scope.details.geometry.location);
-        var googlePosition  = $scope.details.geometry.location;
-        RidesService.postPlace(googlePosition)
-        .success(function() {
-          console.log('postCoords returned success');
-        })
-        .error(function() {
-          console.log('postCoords ERROR');
-        });
-      };
+      // $scope.googleAddress = function() {
+      //   console.log($scope.details.geometry.location);
+        
+      //   RidesService.postCoords(googlePosition)
+      //   .success(function() {
+      //     console.log('postCoords returned success');
+      //   })
+      //   .error(function() {
+      //     console.log('postCoords ERROR');
+      //   });
+      // };
+
 }]);
 
