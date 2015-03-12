@@ -37,4 +37,15 @@ angular.module('chariotApp')
         }
       };
 
+      $scope.googleAddress = function() {
+        console.log($scope.details.geometry.location);
+        var googlePosition  = $scope.details.geometry.location;
+        RidesService.postPlace(googlePosition)
+        .success(function() {
+          console.log('postCoords returned success');
+        })
+        .error(function() {
+          console.log('postCoords ERROR');
+        });
+      };
 }]);

@@ -10,8 +10,20 @@ angular.module('chariotApp')
       latitude:  fullPosition.coords.latitude,
       longitude: fullPosition.coords.longitude
     };
-
-    console.log('sending to server a position = ' + JSON.stringify(position));
+    
+    console.log('sending to server a position = ' + JSON.stringify(position)); 
     return $http.post('/api/rides', {'ride' : position});
+  };
+
+  this.postPlace = function(googlePosition) {
+
+    var position = {
+      user_id: CurrentUser.user().id,
+      end_location: [ googlePosition.k,
+                      googlePosition.D ]
+    };
+
+    console.log('sending to server a position= ' + JSON.stringify(position));
+    return $http.post('/api/rides', { ride: position } );
   };
 }]);
