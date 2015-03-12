@@ -14,7 +14,7 @@ module Api
     # GET /rides/1
     # GET /rides/1.json
     def show
-      render json: @ride
+      render json: Geocoder.nearby(@ride.start_location)
     end
 
     # POST /rides
@@ -22,9 +22,9 @@ module Api
     def create
       puts "RidesController.create"
       @ride = Ride.new(ride_params)
-
+      
       if @ride.save
-        render json: @ride, status: :created, location: @ride
+        render json: @ride, status: :created #, location: @ride
       else
         render json: @ride.errors, status: :unprocessable_entity
       end
@@ -57,7 +57,7 @@ module Api
       end
 
       def ride_params
-        params.require(:ride).permit(:user_id, :start_address, :end_address)
+        params.require(:ride).permit(:user_id, start_location: [], end_location: [])
       end
   end
 end

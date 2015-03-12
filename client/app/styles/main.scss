@@ -1,8 +1,17 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// here you can override theme variables
+// $textColor: #000;
+
+// import lumen variables
+@import "bootswatch-scss/yeti/variables";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+// Bootstrap body padding for fixed navbar
+body { padding-top: 60px; }
+
+// load lumen bootswatch style itself
+@import "bootswatch-scss/yeti/bootswatch";
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
