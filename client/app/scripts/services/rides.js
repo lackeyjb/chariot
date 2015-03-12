@@ -2,28 +2,18 @@
 
 angular.module('chariotApp')
 .service('RidesService', [ '$http', 'CurrentUser', function ($http, CurrentUser) {
-  this.postCoords = function(fullPosition) {
+  this.postCoords = function(fullPosition, googlePosition) {
     console.log('postCords called with user_id & fullPosition = ' + JSON.stringify(fullPosition));
 
     var position = { 
       user_id:   CurrentUser.user().id,
-      latitude:  fullPosition.coords.latitude,
-      longitude: fullPosition.coords.longitude
-    };
-    
-    console.log('sending to server a position = ' + JSON.stringify(position)); 
-    return $http.post('/api/rides', {'ride' : position});
-  };
-
-  this.postPlace = function(googlePosition) {
-
-    var position = {
-      user_id: CurrentUser.user().id,
+      start_location: [ fullPosition.coords.latitude,
+                        fullPosition.coords.longitude ],
       end_location: [ googlePosition.k,
-                      googlePosition.D ]
+                      googlePosition.D]
     };
 
-    console.log('sending to server a position= ' + JSON.stringify(position));
-    return $http.post('/api/rides', { ride: position } );
+    console.log('sending to server a position = ' + JSON.stringify(position));
+    return $http.post('/api/rides.json', { ride: position } );
   };
 }]);

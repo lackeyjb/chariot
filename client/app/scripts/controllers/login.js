@@ -7,6 +7,7 @@ angular.module('chariotApp')
 
   $scope.login = function() {
     if($scope.loginForm.$valid) {
+      console.log('blah');
 
       $scope.errors = [];
       Auth.login($scope.user).success(function() {
