@@ -18,7 +18,7 @@ angular.module('chariotApp')
             $scope.positionMessage = 'Geolocation is not supported';
           });
         } else {
-            $scope.positionMessage = 'Loading...';
+            $scope.positionMessage = 'Finding you...';
             navigator.geolocation.getCurrentPosition(function(position) {
               $rootScope.$apply(function() {
                 $scope.positionMessage = 
@@ -30,11 +30,22 @@ angular.module('chariotApp')
                   console.log('postCoords returned success');
                 })
                 .error(function() {
-                  alert('postCoords ERROR');
+                  console.log('postCoords ERROR');
                 });
               });
           });
         }
       };
 
+      $scope.googleAddress = function() {
+        console.log($scope.details.geometry.location);
+        var googlePosition  = $scope.details.geometry.location;
+        RidesService.postPlace(googlePosition)
+        .success(function() {
+          console.log('postCoords returned success');
+        })
+        .error(function() {
+          console.log('postCoords ERROR');
+        });
+      };
 }]);
