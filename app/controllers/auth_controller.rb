@@ -7,9 +7,12 @@ class AuthController < ApplicationController
       token = AuthToken.issue_token({ user_id: user.id })
       render json: { user: user,
                      token: token }
+      @user = user
     else
       render json: { errors: user.errors }
     end
+
+
   end
 
   def authenticate

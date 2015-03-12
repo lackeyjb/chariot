@@ -59,5 +59,11 @@ module Api
       def ride_params
         params.require(:ride).permit(:user_id, :start_address, :end_address)
       end
+
+      def correct_user
+        @ride = @current_user.rides.find_by(id: params[:id])
+        render json: { error: 'Rides not found' }, status: :not_found if @ride.nil?
+      end
+  
   end
 end
