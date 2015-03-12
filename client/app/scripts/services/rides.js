@@ -6,11 +6,11 @@ angular.module('chariotApp')
     console.log('postCords called with user_id & fullPosition = ' + JSON.stringify(fullPosition));
 
     var position = { 
-      user_id:   CurrentUser.user().id,
-      start_location: [ fullPosition.coords.latitude,
-                        fullPosition.coords.longitude ],
-      end_location: [ googlePosition.k,
-                      googlePosition.D]
+      user_id:    CurrentUser.user().id,
+      start_lat:  fullPosition.coords.latitude,
+      start_long: fullPosition.coords.longitude,
+      end_lat:    googlePosition.k,
+      end_long:   googlePosition.D
     };
 
     console.log('sending to server a position = ' + JSON.stringify(position));
