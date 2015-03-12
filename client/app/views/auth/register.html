@@ -6,9 +6,10 @@
         You forgot the email address.
       </div>
       <div ng-message="email">
-        That is not a well formed email address.
+        Better recheck that email address.
       </div>
     </div>
+    <br>
   </div>
   <div class="control-group">
     <input type="password" class="form-control" placeholder="password" name="password" ng-model="user.password" required>
@@ -18,6 +19,7 @@
       </div>
     </div>
   </div>
+  <br>
   <div class="control-group">
     <input type="password" class="form-control" placeholder="confirm password" name="confirmpassword" ng-model="user.confirmPassword" required>
     <div ng-show="registerForm.confirmpassword.$dirty" ng-messages="registerForm.confirmpassword.$error">
@@ -26,5 +28,5 @@
       </div>
     </div>
   </div>
-
+  <br>
   <input type="submit" class="btn btn-lg btn-primary btn-block" ng-click="register()" value="Create Account" />
