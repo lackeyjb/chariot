@@ -4,12 +4,10 @@ angular.module('chariotApp')
 
 .controller('NavCtrl', function ($scope, $rootScope, $state, $browser, AuthService) {
 
-  console.log('NavCtrl is alive!');
-
   $scope.tabs = [
-    { state: 'home',   label: 'Home',              active: true,  isPublic: true  },
-    { state: 'rides',  label: 'Rides',             active: false, isPublic: false },
-    { state: 'team',   label: 'Team',              active: false, isPublic: true  },
+    { state: 'home',   label: 'Home',  active: true,  isPublic: true  },
+    { state: 'rides',  label: 'Rides', active: false, isPublic: false },
+    { state: 'team',   label: 'Team',  active: false, isPublic: true  },
   ];
 
   $scope.getTabClass = function(tab) {
@@ -35,22 +33,18 @@ angular.module('chariotApp')
     $scope.user = user;
   });
 
-  $scope.logout = function() {
-    console.log('NavCtrl.logout');
+  $scope.logout = function() {    
     AuthService.logout().success(function() {
       $rootScope.$emit('auth:logout');
     });
   };
 
-  $rootScope.$on('auth:new-registration', function(event, user) {
-    // console.log('caught event auth:new-registration with user = ' + JSON.stringify(user));
+  $rootScope.$on('auth:new-registration', function(event, user) {   
     $scope.user = user;
     $state.go('rides');
   });
 
-  $rootScope.$on('auth:login', function(event, user) {
-    // console.log('caught event auth:login with user = ' + JSON.stringify(user));
-    console.log('cookies: ' + JSON.stringify($browser.cookies()));
+  $rootScope.$on('auth:login', function(event, user) {    
     $scope.user = user;
     $state.go('rides');
   });

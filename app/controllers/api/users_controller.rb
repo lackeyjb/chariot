@@ -42,7 +42,4 @@ class Api::UsersController < ApplicationController
       params.require(:user).permit(:email, :password, :password_confirmation)
     end
 
-    def check_permission
-      render json: { error: "Can't touch this" }, status: :unauthorized unless @current_user
-    end
 end

@@ -30,8 +30,7 @@ angular.module('chariotApp')
   };
 
   that.register = function(user) {
-    console.log('register: user = ' + JSON.stringify(user));
-    // return getMockLoginPromise();
+    
     var deferred = $http.post('/api/users', { user: user });
     deferred.success(function(user) {
       that.currentUser = user;
@@ -40,9 +39,8 @@ angular.module('chariotApp')
   };
 
   that.login = function(session) {
-    console.log('login: session = ' + JSON.stringify(session));
-    // return getMockLoginPromise();
-    var deferred = $http.post('/api/sessions', session);
+    
+    var deferred = $http.post('/api/sessions', { session: session });
     deferred.success(function(user) {
       that.currentUser = user;
     });
@@ -50,8 +48,7 @@ angular.module('chariotApp')
   };
 
   that.logout = function() {
-    console.log('logout');
-    // return getMockLogoutPromise();
+    
     var deferred = $http.delete('/api/sessions');
     deferred.success(function() {
       that.currentUser = null;

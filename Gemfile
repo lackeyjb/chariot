@@ -12,6 +12,7 @@ gem 'pg'
 gem 'responders', '~> 2.0'
 
 group :development, :test do
+  gem 'pry'
   gem 'better_errors'
 end
 

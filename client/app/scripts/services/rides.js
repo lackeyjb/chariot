@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('chariotApp')
-.service('RidesService', [ '$http', 'AuthService', function ($http, AuthService) {
-  this.postCoords = function(fullPosition, googlePosition) {
+.service('RidesService', [ '$http', function ($http) {
+  this.postCoords = function(fullPosition, googlePosition, user) {
     console.log('postCords called with user_id & fullPosition = ' + JSON.stringify(fullPosition));
 
     // fix user_id
