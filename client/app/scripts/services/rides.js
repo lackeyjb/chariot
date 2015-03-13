@@ -2,6 +2,11 @@
 
 angular.module('chariotApp')
 .service('RidesService', [ '$http', function ($http) {
+  
+  this.searchRides = function() {
+    return $http.get('/api/rides');
+  };
+
   this.postCoords = function(fullPosition, googlePosition, user) {
     console.log('postCords called with user_id & fullPosition = ' + JSON.stringify(fullPosition));
 
@@ -10,11 +15,12 @@ angular.module('chariotApp')
       user_id: user,
       start_location: [ fullPosition.coords.latitude,
                         fullPosition.coords.longitude ],
-      end_location: [ googlePosition.k,
-                      googlePosition.D]
+      end_location:   [ googlePosition.k,
+                        googlePosition.D ]
     };
 
     console.log('sending to server a position = ' + JSON.stringify(position));
     return $http.post('/api/rides', { ride: position } );
   };
+
 }]);

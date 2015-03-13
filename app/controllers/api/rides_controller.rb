@@ -23,7 +23,7 @@
     @ride = Ride.new(ride_params)
 
     if @ride.save
-      render json: @ride, status: :created, location: @ride
+      render json: @ride, status: :created
     else
       render json: @ride.errors, status: :unprocessable_entity
     end
@@ -56,7 +56,7 @@
     end
 
     def ride_params
-      params.require(:ride).permit(:user_id, :start_address, :end_address)
+      params.require(:ride).permit(:user_id, start_location: [], end_location: [])
     end
 
     def check_permission
