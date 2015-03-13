@@ -19,58 +19,45 @@ angular
     'ngMessages',
     'ngAutocomplete'
   ])
-  .config([ '$stateProvider', '$urlRouterProvider', 'AccessLevels', function ($stateProvider, $urlRouterProvider, AccessLevels) {
-    $urlRouterProvider.otherwise('/');
-    $stateProvider
-      .state('anon',{
-        abstract: true,
-        template: '<ui-view/>',
-        data: {
-          access: AccessLevels.anon
-        }
-      })
-      .state('anon.home', {
-        url: '/',
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .state('anon.about', {
-        url: '/about',
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .state('anon.login', {
-        url: '/login',
-        templateUrl: 'views/auth/login.html',
-        controller: 'LoginCtrl'
-      })
-      .state('anon.register', {
-        url: '/register',
-        templateUrl: 'views/auth/register.html',
-        controller: 'RegisterCtrl'
-      })
-      .state('user', {
-        abstract: true,
-        template: '<ui-view/>',
-        data: {
-          access: AccessLevels.user
-        }
-      })
-      .state('user.rides', {
-        url: '/rides',
-        templateUrl: 'views/user/rides.html',
-        controller: 'RidesCtrl'
-      });
-    }])
-  .run([ '$rootScope', '$state', 'Auth', function($rootScope, $state, Auth) {
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-      if (!Auth.authorize(toState.data.access)) {
-        event.preventDefault();
+  .config(function ($httpProvider, $stateProvider, $urlRouterProvider) {
 
-        $state.go('anon.login');
+  $httpProvider.defaults.withCredentials = true;
+
+  $stateProvider
+  .state('home', {
+    url: '/',
+    templateUrl: 'views/main.html',
+    controller: 'MainCtrl'
+  })
+  .state('rides', {
+    url: '/rides',
+    templateUrl: 'views/rides.html',
+    controller: 'RidesCtrl',
+    onEnter: ['$state', 'AuthService', function($state, AuthService) {
+      if (!AuthService.isAuthenticated()) {
+        $state.go('home');
       }
-    });
-  }]);
+    }]
+  })
+  .state('team', {
+    url: '/team',
+    templateUrl: 'views/Team.html',
+    controller: 'TeamCtrl'
+  })
+  .state('login', {
+    url: '/login',
+    templateUrl: 'views/login.html',
+    controller: 'AuthCtrl'
+  })
+  .state('register', {
+    url: '/register',
+    templateUrl: 'views/register.html',
+    controller: 'AuthCtrl'
+  });
+
+  $urlRouterProvider.otherwise('/');
+  });
+  
         
    
   

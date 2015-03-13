@@ -8,7 +8,7 @@
  * Controller of the chariotApp
  */
 angular.module('chariotApp')
-  .controller('AboutCtrl', [ '$scope', function ($scope) {
+  .controller('TeamCtrl', [ '$scope', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

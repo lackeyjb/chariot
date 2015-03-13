@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
-      resources :users, only: [:show]
-      resources :rides, except: [:new, :edit]  
-  end
+      resources :users,  except: [:new, :edit]
+      resources :rides,  except: [:new, :edit] 
+      resources :sessions, only: [:index, :create] 
 
-  post '/auth/register',     to: 'auth#register'     
-  post '/auth/authenticate', to: 'auth#authenticate'
-  get '/auth/token_status',  to: 'auth#token_status'
+      delete '/sessions', to: 'sessions#destroy'
+  end  
 end
