@@ -8,13 +8,22 @@ angular.module('chariotApp')
     // fix user_id
     var position = { 
       user_id: user,
-      start_location: [ fullPosition.coords.latitude,
-                        fullPosition.coords.longitude ],
-      end_location: [ googlePosition.k,
-                      googlePosition.D]
+      latitude:  fullPosition.coords.latitude,
+      longitude: fullPosition.coords.longitude,
+      end_latitude:    googlePosition.k,
+      end_longitude:   googlePosition.D
     };
 
     console.log('sending to server a position = ' + JSON.stringify(position));
     return $http.post('/api/rides', { ride: position } );
   };
+   
+  this.getRides = function() {
+    return $http.get('/api/rides/');
+  };
+
+  this.getNearbyRides = function() {
+    return $http.get('/api/rides/');
+  };
+
 }]);

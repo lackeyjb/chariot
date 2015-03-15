@@ -6,6 +6,18 @@
       <input type="text" ng-model="autocomplete" ng-autocomplete placeholder="Where do I want to go?"class="form-control" id="focusedInput" type="text" details="details">
     </div>
     <button ng-click="geolocation(); {{user.id}}" class="btn btn-primary">Save my ride</button>
+
+    <button ng-click="getRides();" class="btn btn-primary">Ride Me</button>
+
+
+    <ul>
+      <li ng-repeat="ride in rides">
+        {{ ride.id }}:  {{ ride.end_latitude }}, {{ ride.end_longitude }} -->  {{ ride.user.email }}
+
+      </li>
+    </ul>
   </form>
     
 </div>
+
+

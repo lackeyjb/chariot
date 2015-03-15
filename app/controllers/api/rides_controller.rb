@@ -6,8 +6,8 @@
   # GET /rides.json
   def index
     @rides = Ride.all
-
-    render json: @rides
+    
+    render json: @rides.last.nearbys(1)
   end
 
   # GET /rides/1
@@ -21,9 +21,11 @@
   def create
     puts "RidesController.create"
     @ride = Ride.new(ride_params)
-
+    puts "Ride.near"
+    puts @ride.nearbys
+    puts 'after nearbys'
     if @ride.save
-      render json: @ride, status: :created, location: @ride
+      render json: @ride, status: :created
     else
       render json: @ride.errors, status: :unprocessable_entity
     end
@@ -56,7 +58,7 @@
     end
 
     def ride_params
-      params.require(:ride).permit(:user_id, :start_address, :end_address)
+      params.require(:ride).permit(:user_id, :address, :latitude, :longitude, :end_latitude, :end_longitude, :end_address)
     end
 
     def check_permission

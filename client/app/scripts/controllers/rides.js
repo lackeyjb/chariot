@@ -12,6 +12,18 @@ angular.module('chariotApp')
 .controller('RidesCtrl', ['$scope', '$rootScope', '$browser', 'RidesService', 'AuthService',
   function($scope, $rootScope, $browser, RidesService, AuthService) {
 
+    $scope.getRides = function() {
+      RidesService.getRides() 
+      .success(function(data){
+        $scope.rides = data;
+      })
+      .error(function(){
+        alert('GET:error');
+      });
+    };
+
+    // $scope.getRides();
+
     $scope.geolocation = function() {
       
       if (!navigator) {
@@ -32,6 +44,9 @@ angular.module('chariotApp')
             RidesService.postCoords(position, googlePosition, $scope.user.id)
             .success(function() {
               console.log('postCoords returned success');
+              var jsquid = $scope.getRides();
+              console.log('scoping rides');
+              console.log(JSON.stringify(jsquid));
             })
             .error(function() {
               console.log('postCoords ERROR');
