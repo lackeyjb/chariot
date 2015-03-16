@@ -21,13 +21,24 @@ angular.module('chariotApp')
       country: 'us'
     };
 
-    $scope.getRides = function () {
+    $scope.getRides = function() {
       RidesService.getRides().success(function (data) {
+        console.log(data);
         $scope.rides = data;
       }).error(function() {
         console.log('error');
       });
     };
+
+    $scope.getUserInfo = function(ride) {
+      RidesService.getUserInfo(ride.user_id).success( function(data) {
+        console.log('RidesService.getUserInfo returned: ' + JSON.stringify(data));
+        ride.userInfo = data;
+      }).error(function() {
+        console.log('error');
+      });
+    }; 
+  
 
    
     $scope.geolocation = function() {

@@ -9,6 +9,8 @@
   </form>
   <br>
   <li ng-repeat="ride in rides">
-    <a href="">{{ride}}</a> 
-  </li>  
+    <a ng-click="getUserInfo(ride)">Ride {{$index + 1}}</a> 
+    <p ng-show="ride.userInfo">{{ride.userInfo.email}}</p>
+  </li> 
+  
 </div>

@@ -6,11 +6,10 @@
   # GET /rides.json
   def index
     # binding.pry
-    start_location = current_user.rides.last.start_location
-    end_location   = current_user.rides.last.end_location
+    start_loc = current_user.rides.last.start_location
+    end_loc   = current_user.rides.last.end_location
     
-    rides = Ride.close_to(current_user, start_location, end_location)
-
+    rides = Ride.close_to(current_user, start_loc, end_loc)
     render json: rides
   end
 

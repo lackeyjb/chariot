@@ -7,7 +7,8 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    render json: current_user, status: 200
+    user = User.find(params[:id])
+    render json: user, status: 200
   end
 
   # This is our user registration action
