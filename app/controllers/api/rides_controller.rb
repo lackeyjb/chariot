@@ -5,11 +5,9 @@
   # GET /rides
   # GET /rides.json
   def index
-    # binding.pry
     start_location = current_user.rides.last.start_location
-    end_location   = current_user.rides.last.end_location
-    
-    rides = Ride.close_to(current_user, start_location, end_location)
+    end_location   = current_user.rides.last.end_location   
+    rides          = Ride.close_to(current_user, start_location, end_location)
     render json: rides
   end
 
@@ -25,9 +23,9 @@
   # POST /rides.json
   def create
     puts "RidesController.create"
-    ride = current_user.rides.create!(ride_params)
+    ride    = current_user.rides.create!(ride_params)
     ride_id = current_user.rides.last
-    @ride = Ride.new(ride_params)
+    @ride   = Ride.new(ride_params)
 
     if ride.save
       render json: ride, status: :created
@@ -63,7 +61,7 @@
     end
 
     def ride_params
-      params.require(:ride).permit(:user_id, start_location: [], end_location: [])
+      params.require(:ride).permit(:user_id, :driver, start_location: [], end_location: [])
     end
 
     def check_permission

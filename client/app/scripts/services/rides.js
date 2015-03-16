@@ -11,7 +11,7 @@ angular.module('chariotApp')
     return $http.get('/api/users/' + id);
   };
 
-  this.postCoords = function (fullPosition, googlePosition, user) {
+  this.postCoords = function (fullPosition, googlePosition, user, driver) {
     console.log('postCords called with user_id & fullPosition = ' + JSON.stringify(fullPosition));
 
     // fix user_id
@@ -20,7 +20,8 @@ angular.module('chariotApp')
       start_location: [ fullPosition.coords.latitude,
                         fullPosition.coords.longitude ],
       end_location:   [ googlePosition.k,
-                        googlePosition.D ]
+                        googlePosition.D ],
+      driver: driver
     };
 
     console.log('sending to server a position = ' + JSON.stringify(position));
