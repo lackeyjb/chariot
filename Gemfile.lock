@@ -62,6 +62,7 @@ GEM
     faker (1.4.3)
       i18n (~> 0.5)
     ffi (1.9.6)
+    geocoder (1.2.7)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hike (1.2.3)
@@ -169,6 +170,7 @@ DEPENDENCIES
   capybara
   factory_girl_rails
   faker
+  geocoder (~> 1.2.7)
   pg
   pry
   rack-cors

@@ -11,6 +11,8 @@ gem 'pg'
 
 gem 'responders', '~> 2.0'
 
+gem 'geocoder', '~> 1.2.7'
+
 group :development, :test do
   gem 'pry'
   gem 'better_errors'
