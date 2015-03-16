@@ -2,12 +2,12 @@
 
 angular.module('chariotApp')
 .service('RidesService', [ '$http', function ($http) {
-  
-  this.searchRides = function() {
-    return $http.get('/api/rides');
+ 
+  this.getRides = function() {
+    return $http.get('/api/rides/');
   };
 
-  this.postCoords = function(fullPosition, googlePosition, user) {
+  this.postCoords = function (fullPosition, googlePosition, user) {
     console.log('postCords called with user_id & fullPosition = ' + JSON.stringify(fullPosition));
 
     // fix user_id

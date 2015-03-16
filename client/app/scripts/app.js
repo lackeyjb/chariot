@@ -33,7 +33,7 @@ angular
     url: '/rides',
     templateUrl: 'views/rides.html',
     controller: 'RidesCtrl',
-    onEnter: ['$state', 'AuthService', function($state, AuthService) {
+    onEnter: ['$state', 'AuthService', function ($state, AuthService) {
       if (!AuthService.isAuthenticated()) {
         $state.go('home');
       }
@@ -41,7 +41,7 @@ angular
   })
   .state('team', {
     url: '/team',
-    templateUrl: 'views/Team.html',
+    templateUrl: 'views/team.html',
     controller: 'TeamCtrl'
   })
   .state('login', {

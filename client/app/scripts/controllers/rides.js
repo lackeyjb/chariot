@@ -9,45 +9,54 @@
  */
  
 angular.module('chariotApp')
-.controller('RidesCtrl', ['$scope', '$rootScope', '$browser', 'RidesService', 'AuthService',
-  function($scope, $rootScope, $browser, RidesService, AuthService) {
+.controller('RidesCtrl', ['$scope', '$rootScope', '$state', '$stateParams', 'RidesService', 'AuthService',
+  function($scope, $rootScope, $state, $stateParams, RidesService, AuthService) {
     
     // gets current user info
     AuthService.getSession().success(function(user) {
-      $scope.user = user;
+      $scope.userId = user.id;
     }); 
-    // sets google places to USA
+    // sets google places to only show US locations
     $scope.options = {
       country: 'us'
     };
 
+    $scope.getRides = function (id) {
+      RidesService.getRides(id).success(function (data) {
+        $scope.rides = data;
+      }).error(function() {
+        console.log('error');
+      });
+    };
+
+   
     $scope.geolocation = function() {
       
       if (!navigator) {
         $rootScope.$apply(function() {
           $scope.positionMessage = 'Geolocation is not supported';
         });
+      } else {
 
-        } else {
-          $scope.positionMessage = 'Finding you...';
-          navigator.geolocation.getCurrentPosition(function(position) {
-            $rootScope.$apply(function() {              
-             
-              $scope.destCoords  = $scope.details.geometry.location;            
-            
-              RidesService.postCoords(position, $scope.destCoords, $scope.user.id)
-              .success(function() {
-                console.log('posted coords');
-                RidesService.searchRides().success(function (rideMatches) {                   
-                  $scope.rideMatches = rideMatches;
-                });
+        $scope.positionMessage = 'Finding you...';
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+          $rootScope.$apply(function() {              
+           
+            var destCoords = $scope.details.geometry.location;            
+          
+            RidesService.postCoords(position, destCoords, $scope.userId)
+            .success(function() {
+              
+               $scope.getRides($stateParams.id);                  
+                
               })
-              .error(function() { 
-                console.log('postCoords ERROR'); 
-              }); 
-            });
+            .error(function() { 
+              console.log('postCoords ERROR'); 
+            }); 
           });
-        }   
-      };
+        });
+      }   
+    };
     
 }]);
