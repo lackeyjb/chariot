@@ -5,6 +5,8 @@ gem 'rails', '4.2.0'
 
 gem 'rails-api'
 
+gem 'geocoder'
+
 gem 'spring', :group => :development
 
 gem 'pg'
