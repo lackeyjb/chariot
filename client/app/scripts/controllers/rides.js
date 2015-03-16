@@ -21,8 +21,8 @@ angular.module('chariotApp')
       country: 'us'
     };
 
-    $scope.getRides = function (id) {
-      RidesService.getRides(id).success(function (data) {
+    $scope.getRides = function () {
+      RidesService.getRides().success(function (data) {
         $scope.rides = data;
       }).error(function() {
         console.log('error');
@@ -48,7 +48,7 @@ angular.module('chariotApp')
             RidesService.postCoords(position, destCoords, $scope.userId)
             .success(function() {
               
-               $scope.getRides($stateParams.id);                  
+               $scope.getRides();                  
                 
               })
             .error(function() { 
