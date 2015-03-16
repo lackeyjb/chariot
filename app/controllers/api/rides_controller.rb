@@ -5,9 +5,12 @@
   # GET /rides
   # GET /rides.json
   def index
-    @rides = Ride.all
-    
-    render json: @rides.last.nearbys(1)
+    @ride = Ride.last
+    @rides_near= { 
+      'near_start' => Ride.near([@ride.latitude, @ride.longitude]),
+      'near_end' =>  Ride.near([@ride.end_latitude, @ride.end_longitude])
+    }
+    render json: @rides_near
   end
 
   # GET /rides/1
@@ -21,9 +24,6 @@
   def create
     puts "RidesController.create"
     @ride = Ride.new(ride_params)
-    puts "Ride.near"
-    puts @ride.nearbys
-    puts 'after nearbys'
     if @ride.save
       render json: @ride, status: :created
     else

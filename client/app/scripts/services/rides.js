@@ -22,8 +22,4 @@ angular.module('chariotApp')
     return $http.get('/api/rides/');
   };
 
-  this.getNearbyRides = function() {
-    return $http.get('/api/rides/');
-  };
-
 }]);

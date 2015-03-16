@@ -44,9 +44,7 @@ angular.module('chariotApp')
             RidesService.postCoords(position, googlePosition, $scope.user.id)
             .success(function() {
               console.log('postCoords returned success');
-              var jsquid = $scope.getRides();
-              console.log('scoping rides');
-              console.log(JSON.stringify(jsquid));
+              $scope.getRides();
             })
             .error(function() {
               console.log('postCoords ERROR');
