@@ -21,6 +21,8 @@ angular.module('chariotApp')
       country: 'us'
     };
 
+    $scope.checkbox = false;
+
     $scope.getRides = function() {
       RidesService.getRides().success(function (data) {
         $scope.loadRide = true;
@@ -52,10 +54,9 @@ angular.module('chariotApp')
 
         navigator.geolocation.getCurrentPosition(function(position) {
           $rootScope.$apply(function() {              
-            // $scope.loadRide = false;
-            var destCoords = $scope.details.geometry.location;            
           
-            RidesService.postCoords(position, destCoords, $scope.userId)
+            var destCoords = $scope.details.geometry.location;            
+            RidesService.postCoords(position, destCoords, $scope.userId, $scope.checkbox)
             .success(function() {
               
                $scope.getRides();                  

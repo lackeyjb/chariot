@@ -1,16 +1,19 @@
 <div ng-controller="RidesCtrl">  
-  <h3 ng-show="loadRide">Find a ride to...</h3>
-  <h3 ng-hide="loadRide">Finding your ride <i class="fa fa-spinner fa-pulse"></i></h3>
+  <h3 ng-show="loadRide">Find a chariot to...</h3>
+  <h3 ng-hide="loadRide">Finding your chariot <i class="fa fa-spinner fa-pulse"></i></h3>
   <br>
   <form name="addressForm">     
     <div class="form-group">
-      <input type="text" ng-model="autocomplete" ng-autocomplete options = "options" placeholder="Where do I want to go?"class="form-control" id="focusedInput" type="text" details="details">
+      Driver? Check for yes! <input type="checkbox" ng-model="checkbox">
+      <br>
+      <br>
+      <input type="text" ng-model="autocomplete" ng-autocomplete options="options" placeholder="Where do I want to go?"class="form-control" id="focusedInput" type="text" details="details">
     </div>
     <button ng-click="geolocation(); loadRide=false" class="btn btn-primary">Find</button>
   </form>
   <br>
   <li ng-repeat="ride in rides">
-    <a ng-click="getUserInfo(ride)">Ride {{$index + 1}}</a> 
+    <a ng-click="getUserInfo(ride); ">Ride {{$index + 1}}</a> 
     <p ng-show="ride.userInfo">{{ride.userInfo.email}}</p>
   </li> 
   
