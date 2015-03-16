@@ -10,7 +10,6 @@
     end_location   = current_user.rides.last.end_location
     
     rides = Ride.close_to(current_user, start_location, end_location)
-
     render json: rides
   end
 

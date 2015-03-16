@@ -9,9 +9,9 @@
  */
  
 angular.module('chariotApp')
-.controller('RidesCtrl', ['$scope', '$rootScope', '$state', '$stateParams', 'RidesService', 'AuthService',
+.controller('RidesCtrl', ['$scope', '$rootScope', '$state', '$stateParams', 'RidesService', 'AuthService', 
   function($scope, $rootScope, $state, $stateParams, RidesService, AuthService) {
-    
+    $scope.loadRide = true;
     // gets current user info
     AuthService.getSession().success(function(user) {
       $scope.userId = user.id;
@@ -21,28 +21,38 @@ angular.module('chariotApp')
       country: 'us'
     };
 
-    $scope.getRides = function () {
+    $scope.getRides = function() {
       RidesService.getRides().success(function (data) {
+        $scope.loadRide = true;
+        console.log(data);
         $scope.rides = data;
       }).error(function() {
         console.log('error');
       });
     };
 
+    $scope.getUserInfo = function(ride) {
+      RidesService.getUserInfo(ride.user_id).success( function(data) {
+        console.log('RidesService.getUserInfo returned: ' + JSON.stringify(data));
+        ride.userInfo = data;
+      }).error(function() {
+        console.log('error');
+      });
+    }; 
+  
+
    
     $scope.geolocation = function() {
       
       if (!navigator) {
         $rootScope.$apply(function() {
-          $scope.positionMessage = 'Geolocation is not supported';
+          alert('Geolocation is not supported');
         });
       } else {
 
-        $scope.positionMessage = 'Finding you...';
-
         navigator.geolocation.getCurrentPosition(function(position) {
           $rootScope.$apply(function() {              
-           
+            // $scope.loadRide = false;
             var destCoords = $scope.details.geometry.location;            
           
             RidesService.postCoords(position, destCoords, $scope.userId)

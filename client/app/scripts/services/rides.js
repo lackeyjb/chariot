@@ -7,6 +7,10 @@ angular.module('chariotApp')
     return $http.get('/api/rides/');
   };
 
+  this.getUserInfo = function(id) {
+    return $http.get('/api/users/' + id);
+  };
+
   this.postCoords = function (fullPosition, googlePosition, user) {
     console.log('postCords called with user_id & fullPosition = ' + JSON.stringify(fullPosition));
 

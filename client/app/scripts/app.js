@@ -17,8 +17,17 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMessages',
-    'ngAutocomplete'
+    'ngAutocomplete',
+    'cgBusy'
   ])
+  .value('cgBusyDefaults',{
+  message:'Loading Stuff',
+  backdrop: false,
+  
+  delay: 30,
+  minDuration: 700,
+  wrapperClass: 'my-class my-class2'
+  })
   .config(function ($httpProvider, $stateProvider, $urlRouterProvider) {
 
   $httpProvider.defaults.withCredentials = true;
