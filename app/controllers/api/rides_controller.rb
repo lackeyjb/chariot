@@ -5,11 +5,9 @@
   # GET /rides
   # GET /rides.json
   def index
-    @ride = Ride.last
-    @rides_near= { 
-      'near_start' => Ride.near([@ride.latitude, @ride.longitude]),
-      'near_end' =>  Ride.near([@ride.end_latitude, @ride.end_longitude])
-    }
+    @rides = Ride.last
+
+    @rides_near = Ride.nearby_start(@rides)
     render json: @rides_near
   end
 

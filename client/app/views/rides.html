@@ -13,7 +13,7 @@
   <h4>Near Start</h4>
   <ul>
     <li ng-repeat="ride in rides.near_start">
-      {{ ride.id }}:  {{ ride.latitude }}, {{ ride.longitude }} -->  {{ ride.distance }}
+      {{ ride.id }}:  {{ ride.latitude }}, {{ ride.longitude }} -->  {{ ride.distance }} - {{ ride.user.email }
 
     </li>
   </ul>
@@ -21,7 +21,7 @@
   <h4>Near End</h4>
   <ul>
     <li ng-repeat="ride in rides.near_end">
-      {{ ride.id }}:  {{ ride.end_latitude }}, {{ ride.end_longitude }} -->  {{ ride.distance }}
+      {{ ride.id }}:  {{ ride.end_latitude }}, {{ ride.end_longitude }} -->  {{ ride.distance }}  -  {{ ride}}
 
     </li>
   </ul>
