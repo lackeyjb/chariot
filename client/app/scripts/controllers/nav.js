@@ -5,9 +5,9 @@ angular.module('chariotApp')
 .controller('NavCtrl', function ($scope, $rootScope, $state, $browser, AuthService) {
 
   $scope.tabs = [
-    { state: 'home',   label: 'Home',  active: true,  isPublic: true  },
-    { state: 'rides',  label: 'Rides', active: false, isPublic: false },
-    { state: 'team',   label: 'Team',  active: false, isPublic: true  },
+    { state: 'home',   label: 'home',  active: true,  isPublic: true  },
+    { state: 'rides',  label: 'rides', active: false, isPublic: false },
+    { state: 'team',   label: 'team',  active: false, isPublic: true  },
   ];
 
   $scope.getTabClass = function(tab) {

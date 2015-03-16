@@ -23,21 +23,28 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+<style>
+  .navbar-brand {
+    -webkit-animation-duration: .75s;
+    -webkit-animation-iteration-count: infinite;
+    }
+</style>
+
       <div class="navbar navbar-default" role="navigation" ng-controller="NavCtrl">
-        <div class="container">
+        <div class="container-fluid">
           <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" ui-sref="home">chariot</a>
+            <a class="navbar-brand animated pulse" ui-sref="home" style="font-size: 26px !important; color: red;">chariot</a>
           </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
             <ul class="nav navbar-nav">
               <li ng-repeat="tab in tabs"
@@ -45,10 +52,10 @@
                   ng-class="getTabClass(tab)">
                 <a ui-sref="{{ tab.state }}">{{ tab.label }}</a>
               </li>
-              <li ng-hide="isAuthenticated()"><a ui-sref="login">Login</a></li>
-              <li ng-hide="isAuthenticated()"><a ui-sref="register">Sign up</a></li>
+              <li ng-hide="isAuthenticated()"><a ui-sref="login">login</a></li>
+              <li ng-hide="isAuthenticated()"><a ui-sref="register">sign up</a></li>
               <li ng-show="isAuthenticated()"><a>{{ user ? user.email : '' }}</a></li>
-              <li ng-show="isAuthenticated()"><a ng-click="logout()">Log Out</a></li>
+              <li ng-show="isAuthenticated()"><a ng-click="logout()">log out</a></li>
             </ul>
 
           </div>
@@ -58,6 +65,12 @@
 
     <div class="container">
       <div ui-view></div>
+    </div>
+
+    <div style="text-align:center" class="footer">
+      <div class="container">
+        <p><span style="color:red" <i class="fa fa-heart"></i></span> from GA<sup>2</sup></p>
+      </div>
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
