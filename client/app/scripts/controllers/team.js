@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name chariotApp.controller:AboutCtrl
+ * @name chariotApp.controller:TeamCtrl
  * @description
- * # AboutCtrl
+ * # TeamCtrl
  * Controller of the chariotApp
  */
 angular.module('chariotApp')

@@ -5,7 +5,7 @@ describe('Controller: AboutCtrl', function () {
   // load the controller's module
   beforeEach(module('chariotApp'));
 
-  var AboutCtrl,
+  var TeamCtrl,
     scope;
 
   // Initialize the controller and a mock scope
