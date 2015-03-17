@@ -4,7 +4,7 @@
 
 Chariot is a web application that helps users share rides. The app (geared towards mobile users) finds your current location using HTML5 Geolocator and matches you with other users in the area that want to go to the same place. 
 
-Chariots was developed in a one week sprint as a team project from General Assembly - Atlanta.
+Chariot was developed in a one week sprint as a team project from General Assembly - Atlanta.
 
 ##Technologies Used
 * Ruby 2.2.0
