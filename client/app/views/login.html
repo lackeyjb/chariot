@@ -1,6 +1,6 @@
 <div class="login">
   <div class="page-header">
-    <h1>Log In</h1>
+    <h1>log In</h1>
   </div>
 
   <form name="loginForm"ng-submit="login()" novalidate>
@@ -20,8 +20,10 @@
              ng-model="session.password"
              required>
     </div>
+    <br>
     <button type="submit"
             class="btn btn-primary"
-            ng-disabled="loginForm.$invalid">Login</button>
+            ng-disabled="loginForm.$invalid">login</button>
   </form>
+  <a ui-sref="register">Not a member?</a>
 </div>

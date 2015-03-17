@@ -9,12 +9,17 @@
       <br>
       <input type="text" ng-model="autocomplete" ng-autocomplete options="options" placeholder="Where do I want to go?"class="form-control" id="focusedInput" type="text" details="details">
     </div>
-    <button ng-click="geolocation(); loadRide=false" class="btn btn-primary">Find</button>
+    <button ng-click="geolocation(); loadRide=false" class="btn btn-primary btn-lg">Find</button>
   </form>
   <br>
-  <li ng-repeat="ride in rides">
-    <a ng-click="getUserInfo(ride); ">Ride {{$index + 1}}</a> 
-    <p ng-show="ride.userInfo">{{ride.userInfo.email}}</p>
-  </li> 
+  <br>
+  <p ng-show="noMatches">Sorry, no matches yet!</p>
+  <div ng-repeat="ride in rides">
+      <a ng-click="getUserInfo(ride);" class="btn btn-default btn-lg btn-block">
+        Ride {{$index + 1}}
+      </a>
+      <br>
+        <a ng-show="ride.userInfo" class="btn btn-primary btn-lg btn-block" href="mailto:{{ride.userInfo.email}}?Subject=Chariot%20Together?">Email: {{ride.userInfo.username}}</a>
+    </div>
   
 </div>
