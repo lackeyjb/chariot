@@ -1,7 +1,7 @@
 == README
 
-Chariot automatically finds your geolocation and matches you with friends heading in the same direction.
-
+Chariot helps friends share rides. 
+Our app automatically finds your geolocation and matches you with friends heading in the same direction. 
 
 Technologies used:
 
