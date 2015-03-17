@@ -6,7 +6,7 @@ The developers:
 Bryan Lackey,
 Beth Laing,
 Martin Kikegawa,
-Michael Gurliaccio
+and Michael Gurliaccio
 
 TECHNOLOGIES:
 
