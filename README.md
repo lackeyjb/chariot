@@ -32,5 +32,5 @@ Chariots was developed in a one week sprint as a team project from General Assem
 
 ##Links
 * [Site on Heroku](https://chariots.herokuapp.com)
-* [Trello board](trello.com/b/wZDlwPRc/chariot)
-* [Wireframes](moqups.com/lackeyjb/6u8pzIcy/)
+* [Trello board](https://trello.com/b/wZDlwPRc/chariot)
+* [Wireframes](https://moqups.com/lackeyjb/6u8pzIcy/)
