@@ -1,10 +1,22 @@
 <div class="registration">
   <div class="page-header">
-    <h1>Sign up</h1>
+    <h1>create a profile</h1>
   </div>
 
   <form name="registrationForm" ng-submit="register()" novalidate>
-    
+    <div class="form-group">
+      <input type="username"
+             name="username"
+             class="form-control"
+             placeholder="Username"
+             ng-model="user.username"
+             ng-maxlength="40"
+             required>
+      <div ng-messages="registrationForm.username.$error">
+        <div class="text-danger" ng-message="required">You forgot to enter your username...</div>
+        <div class="text-danger" ng-message="maxlength">Your username is too long...</div>
+      </div>
+    </div>
     <div class="form-group">
       <input type="email"
              name="email"
@@ -36,8 +48,11 @@
         <div class="text-danger" ng-message="minlength">Your password is too short...</div>
         <div class="text-danger" ng-message="maxlength">Your password is too long...</div>
     </div>
+    <br>
     <button type="submit"
             class="btn btn-primary"
-            ng-disabled="registrationForm.$invalid">Register</button>
+            ng-disabled="registrationForm.$invalid">sign up</button>
   </form>
+  <br>
+  <a ui-sref="login">Already a member?</a>
 </div>

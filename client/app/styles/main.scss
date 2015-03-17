@@ -12,6 +12,9 @@ body { padding-top: 60px; }
 
 // load lumen bootswatch style itself
 @import "bootswatch-scss/yeti/bootswatch";
+@import "home";
+@import "team";
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;

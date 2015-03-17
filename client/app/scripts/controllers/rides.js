@@ -27,7 +27,11 @@ angular.module('chariotApp')
       RidesService.getRides().success(function (data) {
         $scope.loadRide = true;
         console.log(data);
+        if(data === null){
+          $scope.noMatches = true;
+        } else {
         $scope.rides = data;
+        }
       }).error(function() {
         console.log('error');
       });

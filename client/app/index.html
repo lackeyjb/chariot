@@ -45,10 +45,10 @@
                   ng-class="getTabClass(tab)">
                 <a ui-sref="{{ tab.state }}">{{ tab.label }}</a>
               </li>
-              <li ng-hide="isAuthenticated()"><a ui-sref="login">Login</a></li>
-              <li ng-hide="isAuthenticated()"><a ui-sref="register">Sign up</a></li>
-              <li ng-show="isAuthenticated()"><a>{{ user ? user.email : '' }}</a></li>
-              <li ng-show="isAuthenticated()"><a ng-click="logout()">Log Out</a></li>
+              <li ng-hide="isAuthenticated()"><a ui-sref="login">login</a></li>
+              <li ng-hide="isAuthenticated()"><a ui-sref="register">sign up</a></li>
+              <li ng-show="isAuthenticated()"><a>{{ user ? "welcome, " + user.username : '' }}</a></li>
+              <li ng-show="isAuthenticated()"><a ng-click="logout()">log out</a></li>
             </ul>
 
           </div>
