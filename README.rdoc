@@ -1,9 +1,14 @@
 == README
 
-Chariot helps friends share rides. 
-Our app automatically finds your geolocation and matches you with friends heading in the same direction. 
+Chariot helps friends share rides. Our app automatically finds your location and matches you with friends heading in the same direction. 
 
-Technologies used:
+The developers:
+Bryan Lackey
+Beth Laing
+Martin Kikegama
+Michael Gurliaccio
+
+TECHNOLOGIES:
 
 * Ruby 4.2.0
 
@@ -13,15 +18,24 @@ Technologies used:
 
 * Google Places API
 
+* ngautocomplete
+
 * Authentication written from scratch on server and client side with Bcrypt
 
 * AngularJS
 
 * Sass
 
-* Heroku link https://chariots.herokuapp.com
+*Twitter Bootstrap
 
-* Trello link https://trello.com/b/wZDlwPRc/chariot
+
+LINKS:
+
+Heroku link https://chariots.herokuapp.com
+
+Trello link https://trello.com/b/wZDlwPRc/chariot
+
+Moqups link https://moqups.com/lackeyjb/6u8pzIcy/
 
 
 
