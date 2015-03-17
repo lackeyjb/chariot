@@ -1,28 +1,27 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Chariot automatically finds your geolocation and matches you with friends heading in the same direction.
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Technologies used:
+
+* Ruby 4.2.0
+
+* Rails API
+
+* Geocoder Gem 1.2.7 for location information
+
+* Google Places API
+
+* Authentication written from scratch on server and client side with Bcrypt
+
+* AngularJS
+
+* Sass
+
+* Heroku link https://chariots.herokuapp.com
+
+* Trello link https://trello.com/b/wZDlwPRc/chariot
+
+
+
