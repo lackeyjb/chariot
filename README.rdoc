@@ -3,9 +3,9 @@
 Chariot helps friends share rides. Our app automatically finds your location and matches you with friends heading in the same direction. 
 
 The developers:
-Bryan Lackey
-Beth Laing
-Martin Kikegawa
+Bryan Lackey,
+Beth Laing,
+Martin Kikegawa,
 Michael Gurliaccio
 
 TECHNOLOGIES:
