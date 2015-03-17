@@ -9,7 +9,7 @@ Chariots was developed in a one week sprint as a team project from General Assem
 ##Technologies Used
 * Ruby 2.2.0
 * Rails 4.2.0
-* Rails API gem
+* Rails API 
 * AngularJS 1.3.14
 * Javascript
 * HTML5
