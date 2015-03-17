@@ -1,28 +1,56 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Chariot helps friends share rides. Our app automatically finds your location and matches you with friends heading in the same direction. 
 
-Things you may want to cover:
+The developers:
+Bryan Lackey,
+Beth Laing,
+Martin Kikegawa,
+and Michael Gurliaccio
 
-* Ruby version
+TECHNOLOGIES:
 
-* System dependencies
+* Ruby 4.2.0
 
-* Configuration
+* Rails API
 
-* Database creation
+* psql (PostgreSQL) 9.4.0
 
-* Database initialization
+* Grunt
 
-* How to run the test suite
+* Bower
 
-* Services (job queues, cache servers, search engines, etc.)
+* HTML5
 
-* Deployment instructions
+* CSS3
 
-* ...
+* Geocoder Gem 1.2.7 for location information
+
+* Google Places API
+
+* ngautocomplete
+
+* Authentication written from scratch on server and client side with Bcrypt
+
+* AngularJS
+
+* Sass
+
+* Twitter Bootstrap
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+LINKS:
+
+Heroku link https://chariots.herokuapp.com
+
+Trello link https://trello.com/b/wZDlwPRc/chariot
+
+Moqups link https://moqups.com/lackeyjb/6u8pzIcy/
+
+
+
+
+
+
+
