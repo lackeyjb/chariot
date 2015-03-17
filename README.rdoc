@@ -14,6 +14,16 @@ TECHNOLOGIES:
 
 * Rails API
 
+* psql (PostgreSQL) 9.4.0
+
+* Grunt
+
+* Bower
+
+* HTML5
+
+* CSS3
+
 * Geocoder Gem 1.2.7 for location information
 
 * Google Places API
