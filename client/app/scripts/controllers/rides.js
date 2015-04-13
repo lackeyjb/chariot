@@ -9,8 +9,8 @@
  */
  
 angular.module('chariotApp')
-.controller('RidesCtrl', ['$scope', '$rootScope', '$state', '$stateParams', 'RidesService', 'AuthService', 
-  function($scope, $rootScope, $state, $stateParams, RidesService, AuthService) {
+.controller('RidesCtrl', ['$scope', '$rootScope', 'RidesService', 'AuthService', 
+  function($scope, $rootScope, RidesService, AuthService) {
     $scope.loadRide = true;
     // gets current user info
     AuthService.getSession().success(function(user) {
@@ -33,8 +33,8 @@ angular.module('chariotApp')
         if(data === null){
           $scope.noMatches = true;
         } else {
-        $scope.rides     = data;
-        $scope.noMatches = false;
+          $scope.rides     = data;
+          $scope.noMatches = false;
         }
       }).error(function() {
         console.log('error');
