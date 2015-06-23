@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMessages',
-    'ngAutocomplete'
+    'ngAutocomplete',
+    'uiGmapGoogle-maps'
   ])
   .config(function ($httpProvider, $stateProvider, $urlRouterProvider) {
 
