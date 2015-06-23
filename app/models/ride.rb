@@ -1,16 +1,37 @@
 class Ride < ActiveRecord::Base
-  
+
   belongs_to :user
-  
-  def self.close_to(user, start_location, end_location)
-    all_rides              = all - user.rides
-    rides_near_start_point = all_rides.select { |ride| Geocoder::Calculations.distance_between(start_location, ride.start_location) < 2 }
-    rides_near_end_point   = rides_near_start_point.select { |ride| Geocoder::Calculations.distance_between(end_location, ride.end_location) < 2 }
-    if user.rides.last.driver
-      rides_near_end_point.select { |ride| ride.driver == false }.uniq { |ride| ride.start_location && ride.end_location }
-    else
-      rides_near_end_point.select { |ride| ride.driver }.uniq { |ride| ride.start_location && ride.end_location }
+
+  class << self
+
+    def close_to(user, current_start_location, current_end_location)
+      all_rides              = find_rides(user)
+      rides_near_start_point = find_nearby_start(all_rides, current_start_location)
+      rides_near_end_point   = find_nearby_end(rides_near_start_point, current_end_location)
+      rides_near_end_point.uniq { |ride| ride.start_location && ride.end_location }
     end
+
+    private
+
+      def find_rides(user)
+        if user.rides.last.driver
+          where.not(user_id: user.id, driver: true)
+        else
+          where.not(user_id: user.id, driver: false)
+        end
+      end
+
+      def distance_between(first_location, second_location)
+        Geocoder::Calculations.distance_between(first_location, second_location)
+      end
+
+      def find_nearby_start(rides, location)
+        rides.select { |ride| distance_between(location, ride.start_location) < 2 }
+      end
+
+      def find_nearby_end(rides, location)
+        rides.select { |ride| distance_between(location, ride.end_location) < 2 }
+      end
   end
-  
+
 end
